@@ -4,12 +4,12 @@ session_start();
  
 if(isset($_GET['logout'])){    
      
-    //Simple exit message
+    //Mensaje al cerrar sesion
     $logout_message = "<div class='msgln'><span class='left-info'>El Usuario <b class='user-name-left'>". $_SESSION['name'] ."</b> se ha desconectado.</span><br></div>";
     file_put_contents("log.html", $logout_message, FILE_APPEND | LOCK_EX);
      
     session_destroy();
-    header("Location: index.php"); //Redirect the user
+    header("Location: chat.php"); //redireccionar al usuario
 }
  
 if(isset($_POST['enter'])){
@@ -84,18 +84,18 @@ function loginForm(){
                 });
  
                 function loadLog() {
-                    var oldscrollHeight = $("#chatbox")[0].scrollHeight - 20; //Scroll height before the request
+                    var oldscrollHeight = $("#chatbox")[0].scrollHeight - 20; 
  
                     $.ajax({
                         url: "log.html",
                         cache: false,
                         success: function (html) {
-                            $("#chatbox").html(html); //Insert chat log into the #chatbox div
+                            $("#chatbox").html(html); //Insertar el chat log en el #chatbox div
  
                             //Auto-scroll           
-                            var newscrollHeight = $("#chatbox")[0].scrollHeight - 20; //Scroll height after the request
+                            var newscrollHeight = $("#chatbox")[0].scrollHeight - 20; 
                             if(newscrollHeight > oldscrollHeight){
-                                $("#chatbox").animate({ scrollTop: newscrollHeight }, 'normal'); //Autoscroll to bottom of div
+                                $("#chatbox").animate({ scrollTop: newscrollHeight }, 'normal'); 
                             }   
                         }
                     });
@@ -106,7 +106,7 @@ function loginForm(){
                 $("#exit").click(function () {
                     var exit = confirm("Estas seguro de que quierer salir?");
                     if (exit == true) {
-                    window.location = "index.php?logout=true";
+                    window.location = "chat.php?logout=true";
                     }
                 });
             });

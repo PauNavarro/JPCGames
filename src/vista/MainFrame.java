@@ -12,8 +12,8 @@ import controlador.*;
 public class MainFrame {
 
 	private JFrame frame;
-	private JTextField textUsuario;
-	private JPasswordField passwordField;
+	public static JTextField textUsuario;
+	public static JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -84,7 +84,12 @@ public class MainFrame {
 		btnPong.setForeground(Color.WHITE);
 		btnPong.setBackground(Color.GRAY);
 		btnPong.addActionListener(new ActionListener() {
+		
+
 			public void actionPerformed(ActionEvent e) {
+				
+				
+				
 			}
 		});
 		btnPong.setBounds(10, 90, 140, 30);
@@ -140,7 +145,7 @@ public class MainFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				try{
-					URI uri = new URI("http://127.0.0.1/");
+					URI uri = new URI("http://54.237.166.122/");
 					Desktop.getDesktop().browse(uri);
 				} catch (Exception except) {
 					except.printStackTrace();
@@ -152,6 +157,17 @@ public class MainFrame {
 		btnChat.setBackground(Color.GRAY);
 		btnChat.setBounds(170, 260, 215, 50);
 		frame.getContentPane().add(btnChat);
+		
+		JButton btnLogin = new JButton("Login");
+		btnLogin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+					controlador.LogIn.login();
+				
+			}
+		});
+		btnLogin.setBounds(10, 325, 89, 23);
+		frame.getContentPane().add(btnLogin);
 
 	}
 }
