@@ -1,0 +1,48 @@
+/*-------------------------------Menu------------------------------------------------*/
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 15px;
+    overflow: hidden;
+    background-color: #333;
+    width: 100%;
+
+}
+li {
+    float: left;
+
+}
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 45px 36px;
+    text-decoration: none;
+
+
+}
+
+ul {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15%;
+    padding-right: 50%;
+    position: relative;
+}
+#logo {
+
+margin-right:150px; 
+
+}
+footer {
+
+            background-color: #333;
+            color: #fff;
+			min-height: 135px;
+			margin-top: 0px;
+			margin-bottom: 0px;
+
+        }
+footer br{
+}
