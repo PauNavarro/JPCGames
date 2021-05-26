@@ -1,0 +1,60 @@
+.titulo{
+	background-color: white;
+	height: 190px;
+	margin-top: -1.5%;
+}
+
+.logo {
+	height: 50px;
+	width: 50px;
+	float: right;
+}
+img{
+display:block;
+margin:auto;
+}
+
+.contenido {
+	background-color: white;
+	margin-top: -1.7%;
+	font-family:'Helvetica','Verdana','Monaco',sans-serif;
+	font-size: medium;
+}
+
+#datos {
+	background-color: #333;
+	font-family:'Helvetica','Verdana','Monaco',sans-serif;
+	font-size: medium;
+	color: white;
+	margin-top: -1.5%;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 5px;
+  overflow: hidden;
+  background-color: #333;
+}
+
+ li {
+  float:  left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+
+body {
+	background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2Wy8-y8PDaqzhEb7UfpGcVGuzlNhRWNWDXw&usqp=CAU);
+	width: 80%;
+	margin-left: 10%;
+}
