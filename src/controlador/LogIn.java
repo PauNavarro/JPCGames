@@ -11,7 +11,6 @@ import vista.MainFrame;
 public class LogIn {
 
 	 
-	@SuppressWarnings("deprecation")
 	public static void login() {
 
 		try {
@@ -31,6 +30,9 @@ public class LogIn {
 				
 				MainFrame.lblconfirmacion.setForeground(Color.black);
 				MainFrame.lblconfirmacion.setText("Login correcto");
+				
+				MainFrame.usuarioActual = MainFrame.textUsuario.getText();
+				
 				MainFrame.passwordField.setText("");
 				MainFrame.textUsuario.setText("");
 			
