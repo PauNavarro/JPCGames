@@ -31,7 +31,7 @@ public class Pong extends Canvas implements Juegos {
 	Ellipse2D.Double pelota;
 	// Rectangle paddle1;
 	Rectangle raqueta;
-	int puntuacion = 0;
+	static int puntuacion = 0;
 	static JFrame win;
 
 	Font splash = new Font("Times", Font.BOLD, 60);
@@ -120,14 +120,19 @@ public class Pong extends Canvas implements Juegos {
 
 			subirPuntos();
 
-			if (continuar() == 0) {
+			int cont = continuar();
+			
+			if (cont == 0) {
 				puntuacion = 0;
 				pelota.x = 500;
 				pelota.y = 350;
 				direccion = new Point(-5, 5);
-			} else if (continuar() == 1) {
-
-				System.runFinalization();
+			} else if (cont == 1) {
+				pelota.x = 500;
+				pelota.y = 350;
+				puntuacion = 0;
+				direccion = new Point(0, 0);
+				win.dispose();
 							
 			}
 
@@ -135,16 +140,11 @@ public class Pong extends Canvas implements Juegos {
 
 	}
 
-	protected void finalize() {	
-		win.setVisible(false);
-		win.dispose();
-	}
-
-	private int continuar() {
+	private static int continuar() {
 
 		ImageIcon icono = new ImageIcon("J:\\JPCGames\\resources\\50x50.png");
 
-		return JOptionPane.showOptionDialog(getParent(), "Quieres volver a jugar?",
+		return JOptionPane.showOptionDialog(win.getParent(), "Quieres volver a jugar?",
 				"Has conseguido " + puntuacion + " puntos", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,
 				icono, new String[] { "Si", "No" }, null);
 	}
@@ -168,10 +168,12 @@ public class Pong extends Canvas implements Juegos {
 			);
 			if (chkUsu.next()) {
 
+				int idUsu = chkUsu.getInt(1);
 				int insertarPuntos = s.executeUpdate(
 
-						"Update puntuacion " + "SET Puntos = '" + puntuacion + "' + Puntos" + "Where idUsuario = '"
-								+ chkUsu.getInt(1) + ";"
+						
+						
+						"Update puntuacion " + "SET Puntos = " + puntuacion + " + Puntos" + "Where idUsuario = " + idUsu + ";"
 
 				);
 
