@@ -2,7 +2,6 @@ package vista;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.io.IOException;
 import java.net.*;
 
 import javax.swing.*;
@@ -15,6 +14,7 @@ public class MainFrame {
 	public static JTextField textUsuario;
 	public static JPasswordField passwordField;
 	public static JLabel lblconfirmacion;
+	public static String usuarioActual;
 
 	/**
 	 * Launch the application.
@@ -89,7 +89,7 @@ public class MainFrame {
 
 			public void actionPerformed(ActionEvent e) {
 				
-				
+				Pong.principal();
 				
 			}
 		});
