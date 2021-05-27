@@ -15,18 +15,12 @@ margin:auto;
 }
 
 .contenido {
-
 	background-color: white;
-	margin-top: -1.7%;
 	font-family:'Helvetica','Verdana','Monaco',sans-serif;
 	font-size: medium;
-	padding: 25px;
 }
 
 #datos {
-	padding-top: 2%;
-	padding-bottom: 2%;
-	padding-left: 2%;
 	background-color: #333;
 	font-family:'Helvetica','Verdana','Monaco',sans-serif;
 	font-size: medium;
@@ -35,13 +29,11 @@ margin:auto;
 }
 
 ul {
-
   list-style-type: none;
   margin: 0;
   padding: 5px;
   overflow: hidden;
   background-color: #333;
-  height: 73px;
 }
 
  li {
@@ -54,7 +46,6 @@ li a {
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-
 }
 
 li a:hover {
@@ -65,4 +56,113 @@ body {
 	background-image: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT2Wy8-y8PDaqzhEb7UfpGcVGuzlNhRWNWDXw&usqp=CAU);
 	width: 80%;
 	margin-left: 10%;
+}
+
+#centrar {
+	text-align: center;
+}
+
+<style>
+@media (max-width: 600px) {
+  .facet_sidebar {
+    display: none;
+  }
+}
+</style>
+
+form{
+	width:300px;
+	padding:16px;
+	border-radius:10px;
+	margin:auto;
+	background-color:#ccc;
+}
+
+form label{
+	width:72px;
+	font-weight:bold;
+	display:inline-block;
+	margin-left: 14px;
+}
+
+form input[type="text"],
+form input[type="email"]{
+	width:180px;
+	padding:3px 10px;
+	border:1px solid #f6f6f6;
+	border-radius:3px;
+	background-color:#f6f6f6;
+	margin:8px 0;
+	display:inline-block;
+	margin-left: 14px;
+}
+
+textarea{
+	width:70%;
+	height:120px;
+	border:1px solid #f6f6f6;
+	border-radius:3px;
+	background-color:#f6f6f6;			
+	margin:8px 0;
+	/*resize: vertical | horizontal | none | both*/
+	resize:none;
+	display:block;
+	margin-left: 14px;
+}
+.input:hover  {
+	background-color: #189FDF ;
+	border-radius: 10px;
+	color: white;
+
+}
+
+.boton {
+border: 1px solid #2e518b; /*anchura, estilo y color borde*/
+padding: 10px; /*espacio alrededor texto*/
+background-color: #2e518b; /*color botón*/
+color: #ffffff; /*color texto*/
+text-decoration: none; /*decoración texto*/
+font-family: 'Helvetica', sans-serif; /*tipografía texto*/
+border-radius: 50px; /*bordes redondos*/
+margin-left: 14px;
+}
+.contacto {
+	background-color: white;
+	margin-top: -0.3%;
+	font-family:'Helvetica','Verdana','Monaco',sans-serif;
+	font-size: medium;
+}
+#piecontacto {
+	background-color: #333;
+	font-family:'Helvetica','Verdana','Monaco',sans-serif;
+	font-size: medium;
+	color: white;
+	margin-top: -1.7%;
+}
+
+.nosotros {
+	background-color: white;
+	margin-top: -0.1%;
+	font-family:'Helvetica','Verdana','Monaco',sans-serif;
+	font-size: medium;
+}
+#pienosotros {
+	background-color: #333;
+	font-family:'Helvetica','Verdana','Monaco',sans-serif;
+	font-size: medium;
+	color: white;
+	margin-top: -1.6%;
+}
+#piedemo {
+	background-color: #333;
+	font-family:'Helvetica','Verdana','Monaco',sans-serif;
+	font-size: medium;
+	color: white;
+	margin-top: -1.4%;
+}
+.demo {
+	background-color: white;
+	margin-top: -0.1%;
+	font-family:'Helvetica','Verdana','Monaco',sans-serif;
+	font-size: medium;
 }
