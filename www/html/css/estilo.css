@@ -18,15 +18,11 @@ margin:auto;
 	background-color: white;
 	font-family:'Helvetica','Verdana','Monaco',sans-serif;
 	font-size: medium;
-	margin-top: -1.7%;
-	padding: 25px;
 
 }
 
 #datos {
-	padding-top: 2%;
-	padding-bottom: 2%;
-	padding-left: 2%;
+	
 	background-color: #333;
 	font-family:'Helvetica','Verdana','Monaco',sans-serif;
 	font-size: medium;
@@ -40,7 +36,6 @@ ul {
   padding: 5px;
   overflow: hidden;
   background-color: #333;
-  height: 73px;
 
 }
 
