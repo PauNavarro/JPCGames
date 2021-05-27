@@ -14,6 +14,7 @@ public class MainFrame {
 	private JFrame frame;
 	public static JTextField textUsuario;
 	public static JPasswordField passwordField;
+	public static JLabel lblconfirmacion;
 
 	/**
 	 * Launch the application.
@@ -49,7 +50,7 @@ public class MainFrame {
 		frame.getContentPane().setForeground(Color.WHITE);
 		frame.getContentPane().setBackground(Color.WHITE);
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("J:\\JPCGames\\resources\\logo.png"));
-		frame.setBounds(100, 100, 400, 400);
+		frame.setBounds(100, 100, 400, 420);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		frame.setResizable(false);
@@ -166,8 +167,23 @@ public class MainFrame {
 				
 			}
 		});
-		btnLogin.setBounds(10, 325, 89, 23);
+		btnLogin.setBounds(10, 325, 140, 25);
 		frame.getContentPane().add(btnLogin);
+		
+		lblconfirmacion = new JLabel("");
+		lblconfirmacion.setBounds(10, 230, 215, 23);
+		frame.getContentPane().add(lblconfirmacion);
+		
+		JButton btnRegistrarse = new JButton("Registrarse");
+		btnRegistrarse.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				Registrar.registrar();
+				
+			}
+		});
+		btnRegistrarse.setBounds(10, 350, 140, 25);
+		frame.getContentPane().add(btnRegistrarse);
 
 	}
 }
