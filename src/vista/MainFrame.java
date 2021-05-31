@@ -111,6 +111,9 @@ public class MainFrame {
 		btnBuscaMinas.setBackground(Color.GRAY);
 		btnBuscaMinas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+			new BuscaMinas();
+				
 			}
 		});
 		btnBuscaMinas.setBounds(10, 160, 140, 30);
