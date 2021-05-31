@@ -28,6 +28,7 @@ public class Pong extends Canvas implements Juegos {
 	Rectangle raqueta;
 	static int puntuacion = 0;
 	static JFrame win;
+	private int iD;
 
 	Font splash = new Font("Times", Font.BOLD, 60);
 
@@ -150,7 +151,9 @@ public class Pong extends Canvas implements Juegos {
 
 	@Override
 	public void subirPuntos() {
-
+		Statement stmt = null;
+		String sqlUpdate = null;
+		String sql = null;
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection conectar = DriverManager.getConnection("jdbc:mysql://54.237.166.122/jpcgames", "conecta",
@@ -161,29 +164,35 @@ public class Pong extends Canvas implements Juegos {
 					"Select idUsuario " + "from usuario " + "where Nombre='" + MainFrame.usuarioActual + "';"
 
 			);
-			if (chkUsu.next()) {
 
-				int idUsu = chkUsu.getInt(1);
-				int insertarPuntos = s.executeUpdate(
+			chkUsu.next();
+			int idUsu = chkUsu.getInt(1);
+			iD = idUsu;
 
-						
-						
-						"Update puntuacion " + "SET Puntos = " + puntuacion + " + Puntos" + "Where idUsuario = " + idUsu + ";"
+			try {
 
-				);
+				sqlUpdate = "Update puntuacion " + "SET Puntos = " + puntuacion + " + Puntos " + "Where idUsuario = "
+						+ iD + ";";
 
-			} else if (!chkUsu.next()) {
-
-				java.sql.PreparedStatement consulta = conectar.prepareStatement("Insert into puntuacion Values(?,?)");
-
-				int iD = chkUsu.getInt(1);
-
-				consulta.setInt(1, iD);
-				consulta.setInt(2, puntuacion);
-
-				consulta.executeUpdate();
-
+				s.executeUpdate(sqlUpdate);
+		
+			} catch (Exception e) {
+				System.out.println("Error en el update");
+				System.out.println(sqlUpdate);
 			}
+
+			try {
+
+				stmt = conectar.createStatement();
+				sql = "INSERT INTO `puntuacion`(`idUsuario`, `Puntos`) VALUES (" + iD + ", " + puntuacion + ");";
+				stmt.executeUpdate(sql);
+
+			} catch (Exception e) {
+				System.out.println("Error en el insert");
+				System.out.println(sql);
+				
+			}
+
 		} catch (Exception e) {
 
 			e.printStackTrace();
