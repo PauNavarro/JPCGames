@@ -10,16 +10,11 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 
-import javax.swing.*;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-
-import com.mysql.jdbc.PreparedStatement;
 
 import vista.MainFrame;
 
@@ -44,7 +39,7 @@ public class Pong extends Canvas implements Juegos {
 		win.add(new Pong());
 		win.setVisible(true);
 		win.setResizable(false);
-		
+
 	}
 
 	public Pong() {
@@ -121,7 +116,7 @@ public class Pong extends Canvas implements Juegos {
 			subirPuntos();
 
 			int cont = continuar();
-			
+
 			if (cont == 0) {
 				puntuacion = 0;
 				pelota.x = 500;
@@ -133,7 +128,7 @@ public class Pong extends Canvas implements Juegos {
 				puntuacion = 0;
 				direccion = new Point(0, 0);
 				win.dispose();
-							
+
 			}
 
 		}
