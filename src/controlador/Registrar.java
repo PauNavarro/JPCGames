@@ -31,6 +31,7 @@ public class Registrar {
 
 						"insert into usuario (Nombre,Contraseña) " + "values ('" + MainFrame.textUsuario.getText()
 								+ "', '" + passwdUsu + "')");
+				
 
 				if (insertarUsu > 0) {
 					MainFrame.lblconfirmacion.setForeground(Color.black);

@@ -49,7 +49,7 @@ public class MainFrame {
 		frame = new JFrame("JPCGames");
 		frame.getContentPane().setForeground(Color.WHITE);
 		frame.getContentPane().setBackground(Color.WHITE);
-		frame.setIconImage(Toolkit.getDefaultToolkit().getImage("J:\\JPCGames\\resources\\logo.png"));
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(MainFrame.class.getResource("/resources/logo.png")));
 		frame.setBounds(100, 100, 400, 420);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
@@ -69,13 +69,17 @@ public class MainFrame {
 		logoJPC.setBounds(10, 10, 150, 50);
 		frame.getContentPane().add(logoJPC);
 
-		logoJPC.setIcon(new ImageIcon("J:\\JPCGames\\resources\\50x50.png"));
+		logoJPC.setIcon(new ImageIcon(MainFrame.class.getResource("/resources/50x50.png")));
 
 		JButton btnPuntuaciones = new JButton("PUNTUACIONES");
 		btnPuntuaciones.setForeground(Color.WHITE);
 		btnPuntuaciones.setBackground(Color.GRAY);
 		btnPuntuaciones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				Puntuaciones puntuaciones = new Puntuaciones();
+				puntuaciones.run();
+				
 			}
 		});
 		btnPuntuaciones.setBounds(170, 10, 215, 50);
