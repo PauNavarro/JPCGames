@@ -18,8 +18,9 @@ import java.awt.event.ActionEvent;
 @SuppressWarnings("serial")
 public class TresenRaya extends JFrame {
 	public boolean enRaya = false;
-	public boolean turno = false;
-	public boolean ocupado = false;
+	public boolean empate = false;
+	public boolean turno;
+	public boolean ocupado;
 	private JPanel contentPane;
 	JButton DerechaAriba = new JButton("");
 	JButton DerechaMedio = new JButton("");
@@ -40,6 +41,7 @@ public class TresenRaya extends JFrame {
 				try {
 					TresenRaya frame = new TresenRaya();
 					frame.setVisible(true);
+					frame.setLocationRelativeTo(null);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -52,7 +54,6 @@ public class TresenRaya extends JFrame {
 	 */
 
 	public TresenRaya() {
-		
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 443, 292);
@@ -61,8 +62,6 @@ public class TresenRaya extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 
-		
-
 		DerechaAriba.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DerechaAriba.setText("X");
@@ -70,10 +69,8 @@ public class TresenRaya extends JFrame {
 
 				comprobarTresRayas(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio,
 						IzquierdaBajo, MedioAriba, MedioMedio, MedioBajo);
-				EspacioOcupado();
-				Random(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio, IzquierdaBajo,
-						MedioAriba, MedioMedio, MedioBajo);
-				enRaya();
+				EspacioOcupado(turno, ocupado);
+				turno();
 
 			}
 		});
@@ -85,10 +82,8 @@ public class TresenRaya extends JFrame {
 
 				comprobarTresRayas(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio,
 						IzquierdaBajo, MedioAriba, MedioMedio, MedioBajo);
-				enRaya();
-				EspacioOcupado();
-				Random(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio, IzquierdaBajo,
-						MedioAriba, MedioMedio, MedioBajo);
+				EspacioOcupado(turno, ocupado);
+				turno();
 
 			}
 
@@ -101,10 +96,8 @@ public class TresenRaya extends JFrame {
 
 				comprobarTresRayas(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio,
 						IzquierdaBajo, MedioAriba, MedioMedio, MedioBajo);
-				enRaya();
-				EspacioOcupado();
-				Random(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio, IzquierdaBajo,
-						MedioAriba, MedioMedio, MedioBajo);
+				EspacioOcupado(turno, ocupado);
+				turno();
 
 			}
 		});
@@ -116,10 +109,8 @@ public class TresenRaya extends JFrame {
 
 				comprobarTresRayas(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio,
 						IzquierdaBajo, MedioAriba, MedioMedio, MedioBajo);
-				enRaya();
-				EspacioOcupado();
-				Random(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio, IzquierdaBajo,
-						MedioAriba, MedioMedio, MedioBajo);
+				EspacioOcupado(turno, ocupado);
+				turno();
 
 			}
 		});
@@ -131,10 +122,8 @@ public class TresenRaya extends JFrame {
 
 				comprobarTresRayas(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio,
 						IzquierdaBajo, MedioAriba, MedioMedio, MedioBajo);
-				enRaya();
-				EspacioOcupado();
-				Random(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio, IzquierdaBajo,
-						MedioAriba, MedioMedio, MedioBajo);
+				EspacioOcupado(turno, ocupado);
+				turno();
 
 			}
 		});
@@ -146,10 +135,8 @@ public class TresenRaya extends JFrame {
 
 				comprobarTresRayas(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio,
 						IzquierdaBajo, MedioAriba, MedioMedio, MedioBajo);
-				enRaya();
-				EspacioOcupado();
-				Random(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio, IzquierdaBajo,
-						MedioAriba, MedioMedio, MedioBajo);
+				EspacioOcupado(turno, ocupado);
+				turno();
 
 			}
 		});
@@ -161,10 +148,8 @@ public class TresenRaya extends JFrame {
 
 				comprobarTresRayas(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio,
 						IzquierdaBajo, MedioAriba, MedioMedio, MedioBajo);
-				enRaya();
-				EspacioOcupado();
-				Random(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio, IzquierdaBajo,
-						MedioAriba, MedioMedio, MedioBajo);
+				EspacioOcupado(turno, ocupado);
+				turno();
 
 			}
 		});
@@ -176,10 +161,9 @@ public class TresenRaya extends JFrame {
 
 				comprobarTresRayas(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio,
 						IzquierdaBajo, MedioAriba, MedioMedio, MedioBajo);
-				enRaya();
-				EspacioOcupado();
-				Random(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio, IzquierdaBajo,
-						MedioAriba, MedioMedio, MedioBajo);
+				EspacioOcupado(turno, ocupado);
+				turno();
+
 			}
 
 		});
@@ -191,10 +175,8 @@ public class TresenRaya extends JFrame {
 
 				comprobarTresRayas(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio,
 						IzquierdaBajo, MedioAriba, MedioMedio, MedioBajo);
-				enRaya();
-				EspacioOcupado();
-				Random(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio, IzquierdaBajo,
-						MedioAriba, MedioMedio, MedioBajo);
+				EspacioOcupado(turno, ocupado);
+				turno();
 
 			}
 		});
@@ -228,179 +210,6 @@ public class TresenRaya extends JFrame {
 
 	}
 
-	protected void EspacioOcupado() {
-		System.out.println("entra 1");
-
-		if (DerechaAriba.getText().equals("X")) {
-			ocupado = true;
-			turno = true;
-
-		} else {
-			ocupado = false;
-			turno = false;
-
-		}
-		if (DerechaMedio.getText().equals("X")) {
-			ocupado = true;
-			turno = true;
-
-		} else {
-			ocupado = false;
-			turno = false;
-
-		}
-		if (DerechaBajo.getText().equals("X")) {
-			ocupado = true;
-			turno = true;
-
-		} else {
-			ocupado = false;
-			turno = false;
-
-		}
-		if (IzquierdaAriba.getText().equals("X")) {
-			ocupado = true;
-			turno = true;
-
-		} else {
-			ocupado = false;
-			turno = false;
-
-		}
-		if (IzquierdaMedio.getText().equals("X")) {
-			ocupado = true;
-			turno = true;
-
-		} else {
-			ocupado = false;
-			turno = false;
-
-		}
-
-		if (IzquierdaBajo.getText().equals("X")) {
-			ocupado = true;
-			turno = true;
-
-		} else {
-			ocupado = false;
-			turno = false;
-
-		}
-
-		if (MedioAriba.getText().equals("X")) {
-			ocupado = true;
-			turno = true;
-
-		} else {
-			ocupado = false;
-			turno = false;
-
-		}
-		if (MedioMedio.getText().equals("X")) {
-			ocupado = true;
-			turno = true;
-
-		} else {
-			ocupado = false;
-			turno = false;
-
-		}
-		if (MedioBajo.getText().equals("X")) {
-			ocupado = true;
-			turno = true;
-
-		} else {
-			ocupado = false;
-			turno = false;
-
-		}
-
-		// Ocupado para el O
-
-		if (DerechaAriba.getText().equals("O")) {
-			ocupado = true;
-			turno = true;
-
-		} else {
-			ocupado = false;
-			turno = false;
-
-		}
-		if (DerechaMedio.getText().equals("O")) {
-			ocupado = true;
-			turno = true;
-
-		} else {
-			ocupado = false;
-			turno = false;
-
-		}
-		if (DerechaBajo.getText().equals("O")) {
-			ocupado = true;
-			turno = true;
-
-		} else {
-			ocupado = false;
-			turno = false;
-
-		}
-
-		if (IzquierdaAriba.getText().equals("O")) {
-			ocupado = true;
-			turno = true;
-
-		} else {
-			ocupado = false;
-			turno = false;
-
-		}
-		if (IzquierdaMedio.getText().equals("O")) {
-			ocupado = true;
-			turno = true;
-
-		} else {
-			ocupado = false;
-			turno = false;
-
-		}
-		if (IzquierdaBajo.getText().equals("O")) {
-			ocupado = true;
-			turno = true;
-
-		} else {
-			ocupado = false;
-			turno = false;
-
-		}
-		if (MedioAriba.getText().equals("O")) {
-			ocupado = true;
-			turno = true;
-
-		} else {
-			ocupado = false;
-			turno = false;
-
-		}
-		if (MedioMedio.getText().equals("O")) {
-			ocupado = true;
-			turno = true;
-
-		} else {
-			ocupado = false;
-			turno = false;
-
-		}
-		if (MedioBajo.getText().equals("O")) {
-			ocupado = true;
-			turno = true;
-
-		} else {
-			ocupado = false;
-			turno = false;
-
-		}
-	}
-
 	public void comprobarTresRayas(JButton DerechaAriba, JButton DerechaMedio, JButton DerechaBajo,
 			JButton IzquierdaAriba, JButton IzquierdaMedio, JButton IzquierdaBajo, JButton MedioAriba,
 			JButton MedioMedio, JButton MedioBajo) {
@@ -411,196 +220,380 @@ public class TresenRaya extends JFrame {
 		if (DerechaAriba.getText().equals("X") && DerechaMedio.getText().equals("X")
 				&& DerechaBajo.getText().equals("X")) {
 			enRaya = true;
-
+			enRaya();
 		}
+
 		if (IzquierdaAriba.getText().equals("X") && IzquierdaMedio.getText().equals("X")
 				&& IzquierdaBajo.getText().equals("X")) {
 			enRaya = true;
-
+			enRaya();
 		}
+
 		if (MedioAriba.getText().equals("X") && MedioMedio.getText().equals("X") && MedioBajo.getText().equals("X")) {
 			enRaya = true;
-
+			enRaya();
 		}
+
 		if (DerechaAriba.getText().equals("X") && MedioMedio.getText().equals("X")
 				&& IzquierdaBajo.getText().equals("X")) {
 			enRaya = true;
-
+			enRaya();
 		}
+
 		if (IzquierdaAriba.getText().equals("X") && MedioMedio.getText().equals("X")
 				&& DerechaBajo.getText().equals("X")) {
 			enRaya = true;
-
+			enRaya();
 		}
+
 		if (IzquierdaAriba.getText().equals("X") && MedioAriba.getText().equals("X")
 				&& DerechaAriba.getText().equals("X")) {
 			enRaya = true;
-
+			enRaya();
 		}
+
 		if (IzquierdaMedio.getText().equals("X") && MedioMedio.getText().equals("X")
 				&& DerechaMedio.getText().equals("X")) {
 			enRaya = true;
-
-			JOptionPane.showMessageDialog(this, "Tres en Raya");
-
+			enRaya();
 		}
+
 		if (IzquierdaBajo.getText().equals("X") && MedioBajo.getText().equals("X")
 				&& DerechaBajo.getText().equals("X")) {
 			enRaya = true;
-
+			enRaya();
 		}
 
 		// Victoria para el O
 
 		if (DerechaAriba.getText().equals("O") && DerechaMedio.getText().equals("O")
 				&& DerechaBajo.getText().equals("O")) {
-			enRaya = true;
+			enRaya = false;
+			enRaya();
 
 		}
+
 		if (IzquierdaAriba.getText().equals("O") && IzquierdaMedio.getText().equals("O")
 				&& IzquierdaBajo.getText().equals("O")) {
-			enRaya = true;
+			enRaya = false;
+			enRaya();
 
 		}
+
 		if (MedioAriba.getText().equals("O") && MedioMedio.getText().equals("O") && MedioBajo.getText().equals("O")) {
-			enRaya = true;
+			enRaya = false;
+			enRaya();
 
 		}
+
 		if (DerechaAriba.getText().equals("O") && MedioMedio.getText().equals("O")
 				&& IzquierdaBajo.getText().equals("O")) {
-			enRaya = true;
+			enRaya = false;
+			enRaya();
 
 		}
+
 		if (IzquierdaAriba.getText().equals("O") && MedioMedio.getText().equals("O")
 				&& DerechaBajo.getText().equals("O")) {
-			enRaya = true;
+			enRaya = false;
+			enRaya();
 
 		}
+
 		if (IzquierdaAriba.getText().equals("O") && MedioAriba.getText().equals("O")
 				&& DerechaAriba.getText().equals("O")) {
-			enRaya = true;
+			enRaya = false;
+			enRaya();
 
 		}
+
 		if (IzquierdaMedio.getText().equals("O") && MedioMedio.getText().equals("O")
 				&& DerechaMedio.getText().equals("O")) {
-			enRaya = true;
-
-			JOptionPane.showMessageDialog(this, "Tres en Raya");
+			enRaya = false;
+			enRaya();
 
 		}
+
 		if (IzquierdaBajo.getText().equals("O") && MedioBajo.getText().equals("O")
 				&& DerechaBajo.getText().equals("O")) {
-			enRaya = true;
-
+			enRaya = false;
+			enRaya();
 		}
+
 	}
 
 	public void enRaya() {
 
-		if (enRaya == true)
-			JOptionPane.showMessageDialog(this, "Tres en Raya");
-	}
+		if (enRaya == true) {
+			JOptionPane.showMessageDialog(this, "Tres en Raya X");
 
-	public void turno() {
-		for  (int i = 1; i <= 9 ; i++) {
+		} else if (enRaya == false) {
+			JOptionPane.showMessageDialog(this, "Tres en Raya O");
 
-			if (i % 2 == 0) {
-
-				ocupado = false;
-				while (ocupado == false) {
-
-
-
-
-					Random(null, null, null, null, null, null, null, null, null);
-				}
-
-				turno = false;
-			}
-
-		}}
-
-	protected void Random(JButton DerechaAriba, JButton DerechaMedio, JButton DerechaBajo, JButton IzquierdaAriba,
-			JButton IzquierdaMedio, JButton IzquierdaBajo, JButton MedioAriba, JButton MedioMedio, JButton MedioBajo) {
-		int random = (int) (Math.random() * 9);
-
-		switch (random) {
-		case 1:
-			DerechaAriba.setText("O");
-			DerechaAriba.setEnabled(false);
-
-			EspacioOcupado();
-			comprobarTresRayas(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio,
-					IzquierdaBajo, MedioAriba, MedioMedio, MedioBajo);
-			enRaya();
-			break;
-		case 2:
-			DerechaMedio.setText("O");
-			DerechaMedio.setEnabled(false);
-			EspacioOcupado();
-			comprobarTresRayas(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio,
-					IzquierdaBajo, MedioAriba, MedioMedio, MedioBajo);
-			enRaya();
-			break;
-		case 3:
-			DerechaBajo.setText("O");
-			DerechaBajo.setEnabled(false);
-			EspacioOcupado();
-			comprobarTresRayas(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio,
-					IzquierdaBajo, MedioAriba, MedioMedio, MedioBajo);
-			enRaya();
-			break;
-		case 4:
-			IzquierdaAriba.setText("O");
-			IzquierdaAriba.setEnabled(false);
-			EspacioOcupado();
-			comprobarTresRayas(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio,
-					IzquierdaBajo, MedioAriba, MedioMedio, MedioBajo);
-			enRaya();
-			break;
-		case 5:
-			IzquierdaMedio.setText("O");
-			IzquierdaMedio.setEnabled(false);
-			EspacioOcupado();
-			comprobarTresRayas(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio,
-					IzquierdaBajo, MedioAriba, MedioMedio, MedioBajo);
-			enRaya();
-			break;
-		case 6:
-			IzquierdaBajo.setText("O");
-			IzquierdaBajo.setEnabled(false);
-			EspacioOcupado();
-			comprobarTresRayas(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio,
-					IzquierdaBajo, MedioAriba, MedioMedio, MedioBajo);
-			enRaya();
-			break;
-		case 7:
-			MedioAriba.setText("O");
-			MedioAriba.setEnabled(false);
-			EspacioOcupado();
-			comprobarTresRayas(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio,
-					IzquierdaBajo, MedioAriba, MedioMedio, MedioBajo);
-			enRaya();
-			break;
-		case 8:
-			MedioMedio.setText("O");
-			MedioMedio.setEnabled(false);
-			EspacioOcupado();
-			comprobarTresRayas(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio,
-					IzquierdaBajo, MedioAriba, MedioMedio, MedioBajo);
-			enRaya();
-			break;
-		case 9:
-			MedioBajo.setText("O");
-			MedioBajo.setEnabled(false);
-			EspacioOcupado();
-			comprobarTresRayas(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio,
-					IzquierdaBajo, MedioAriba, MedioMedio, MedioBajo);
-			enRaya();
-			break;
+		} else {
+			JOptionPane.showMessageDialog(this, "Empate");
 
 		}
 
 	}
 
+	public void turno() {
+		int cont = 0;
+		while (cont < 1) {
+
+			if (cont > 10) {
+				enRaya();
+			} else {
+
+				int random = (int) (Math.random() * 9);
+
+				System.out.println("" + random);
+
+				switch (random) {
+				case 1:
+					EspacioOcupado(turno, ocupado);
+					if (DerechaAriba.getText().equals("X") || DerechaAriba.getText().equals("O")) {
+						EspacioOcupado(turno, ocupado);
+						cont = 0;
+					} else {
+						EspacioOcupado(turno, ocupado);
+						DerechaAriba.setText("O");
+						DerechaAriba.setEnabled(false);
+						cont += 1;
+					}
+					comprobarTresRayas(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio,
+							IzquierdaBajo, MedioAriba, MedioMedio, MedioBajo);
+					break;
+				case 2:
+					EspacioOcupado(turno, ocupado);
+					if (DerechaMedio.getText().equals("X") || DerechaMedio.getText().equals("O")) {
+						EspacioOcupado(turno, ocupado);
+						cont = 0;
+
+					} else {
+						DerechaMedio.setText("O");
+						EspacioOcupado(turno, ocupado);
+						DerechaMedio.setEnabled(false);
+						cont += 1;
+					}
+
+					comprobarTresRayas(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio,
+							IzquierdaBajo, MedioAriba, MedioMedio, MedioBajo);
+					break;
+				case 3:
+					EspacioOcupado(turno, ocupado);
+					if (DerechaBajo.getText().equals("X") || DerechaBajo.getText().equals("O")) {
+						EspacioOcupado(turno, ocupado);
+						cont = 0;
+
+					} else {
+						DerechaBajo.setText("O");
+						EspacioOcupado(turno, ocupado);
+						DerechaBajo.setEnabled(false);
+						cont += 1;
+
+					}
+					comprobarTresRayas(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio,
+							IzquierdaBajo, MedioAriba, MedioMedio, MedioBajo);
+					break;
+				case 4:
+					EspacioOcupado(turno, ocupado);
+					if (IzquierdaAriba.getText().equals("X") || IzquierdaAriba.getText().equals("O")) {
+						EspacioOcupado(turno, ocupado);
+						cont = 0;
+
+					} else {
+						IzquierdaAriba.setText("O");
+						EspacioOcupado(turno, ocupado);
+						IzquierdaAriba.setEnabled(false);
+						cont += 1;
+					}
+
+					comprobarTresRayas(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio,
+							IzquierdaBajo, MedioAriba, MedioMedio, MedioBajo);
+					break;
+				case 5:
+					EspacioOcupado(turno, ocupado);
+					if (IzquierdaMedio.getText().equals("X") || IzquierdaMedio.getText().equals("O")) {
+						EspacioOcupado(turno, ocupado);
+						cont = 0;
+
+					} else {
+						IzquierdaMedio.setText("O");
+						EspacioOcupado(turno, ocupado);
+						IzquierdaMedio.setEnabled(false);
+						cont += 1;
+
+					}
+					comprobarTresRayas(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio,
+							IzquierdaBajo, MedioAriba, MedioMedio, MedioBajo);
+					break;
+				case 6:
+					EspacioOcupado(turno, ocupado);
+					if (IzquierdaBajo.getText().equals("X") || IzquierdaBajo.getText().equals("O")) {
+						EspacioOcupado(turno, ocupado);
+						cont = 0;
+
+					} else {
+						IzquierdaBajo.setText("O");
+						EspacioOcupado(turno, ocupado);
+						IzquierdaBajo.setEnabled(false);
+						cont += 1;
+					}
+					comprobarTresRayas(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio,
+							IzquierdaBajo, MedioAriba, MedioMedio, MedioBajo);
+					break;
+				case 7:
+					EspacioOcupado(turno, ocupado);
+					if (MedioAriba.getText().equals("X") || MedioAriba.getText().equals("O")) {
+						EspacioOcupado(turno, ocupado);
+						cont = 0;
+					} else {
+						MedioAriba.setText("O");
+						EspacioOcupado(turno, ocupado);
+						MedioAriba.setEnabled(false);
+						cont += 1;
+
+					}
+					comprobarTresRayas(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio,
+							IzquierdaBajo, MedioAriba, MedioMedio, MedioBajo);
+					break;
+				case 8:
+					EspacioOcupado(turno, ocupado);
+					if (MedioMedio.getText().equals("X") || MedioMedio.getText().equals("O")) {
+						EspacioOcupado(turno, ocupado);
+						cont = 0;
+
+					} else {
+						MedioMedio.setText("O");
+						EspacioOcupado(turno, ocupado);
+						MedioMedio.setEnabled(false);
+						cont += 1;
+					}
+					comprobarTresRayas(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio,
+							IzquierdaBajo, MedioAriba, MedioMedio, MedioBajo);
+					turno = true;
+
+					break;
+				case 9:
+					EspacioOcupado(enRaya, enRaya);
+					if (MedioBajo.getText().equals("X") || MedioBajo.getText().equals("O")) {
+						EspacioOcupado(turno, ocupado);
+						cont = 0;
+
+					} else {
+						MedioBajo.setText("O");
+						EspacioOcupado(turno, ocupado);
+						MedioBajo.setEnabled(false);
+						cont += 1;
+					}
+
+					comprobarTresRayas(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio,
+							IzquierdaBajo, MedioAriba, MedioMedio, MedioBajo);
+					break;
+				default:
+					cont += 1;
+					break;
+
+				}
+				comprobarTresRayas(DerechaAriba, DerechaMedio, DerechaBajo, IzquierdaAriba, IzquierdaMedio,
+						IzquierdaBajo, MedioAriba, MedioMedio, MedioBajo);
+				EspacioOcupado(turno, ocupado);
+
+			}
+		}
+	}
+
+	protected void Random(JButton DerechaAriba, JButton DerechaMedio, JButton DerechaBajo, JButton IzquierdaAriba,
+			JButton IzquierdaMedio, JButton IzquierdaBajo, JButton MedioAriba, JButton MedioMedio, JButton MedioBajo) {
+
+	}
+
+	protected void EspacioOcupado(boolean turno, boolean ocupado) {
+		System.out.println("entra 1");
+
+		if (DerechaAriba.getText().equals("X") || DerechaAriba.getText().equals("O")) {
+			ocupado = true;
+			turno = true;
+
+		} else {
+			ocupado = false;
+			turno = false;
+
+		}
+		if (DerechaMedio.getText().equals("X") || DerechaMedio.getText().equals("O")) {
+			ocupado = true;
+			turno = true;
+
+		} else {
+			ocupado = false;
+			turno = false;
+
+		}
+		if (DerechaBajo.getText().equals("X") || DerechaBajo.getText().equals("O")) {
+			ocupado = true;
+			turno = true;
+
+		} else {
+			ocupado = false;
+			turno = false;
+
+		}
+		if (IzquierdaAriba.getText().equals("X") || IzquierdaAriba.getText().equals("O")) {
+			ocupado = true;
+			turno = true;
+
+		} else {
+			ocupado = false;
+			turno = false;
+
+		}
+		if (IzquierdaMedio.getText().equals("X") || IzquierdaMedio.getText().equals("O")) {
+			ocupado = true;
+			turno = true;
+
+		} else {
+			ocupado = false;
+			turno = false;
+
+		}
+
+		if (IzquierdaBajo.getText().equals("X") || IzquierdaBajo.getText().equals("O")) {
+			ocupado = true;
+			turno = true;
+
+		} else {
+			ocupado = false;
+			turno = false;
+
+		}
+
+		if (MedioAriba.getText().equals("X") || MedioAriba.getText().equals("O")) {
+			ocupado = true;
+			turno = true;
+
+		} else {
+			ocupado = false;
+			turno = false;
+
+		}
+		if (MedioMedio.getText().equals("X") || MedioMedio.getText().equals("O")) {
+			ocupado = true;
+			turno = true;
+
+		} else {
+			ocupado = false;
+			turno = false;
+
+		}
+		if (MedioBajo.getText().equals("X") || MedioBajo.getText().equals("O")) {
+			ocupado = true;
+			turno = true;
+
+		} else {
+			ocupado = false;
+			turno = false;
+
+		}
+	}
 }
