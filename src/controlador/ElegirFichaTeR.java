@@ -19,7 +19,7 @@ public class ElegirFichaTeR {
 	private JFrame frame;
 
 	/**
-	 * Launch the application.
+	 * Inicia la aplicación.
 	 */
 	public static void run() {
 		EventQueue.invokeLater(new Runnable() {
@@ -35,14 +35,14 @@ public class ElegirFichaTeR {
 	}
 
 	/**
-	 * Create the application.
+	 *  llama al metodo .
 	 */
 	public ElegirFichaTeR() {
 		initialize();
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Inicializar el contenido del tablero para eligir quien de los dos juegan.
 	 */
 	private void initialize() {
 		frame = new JFrame();
