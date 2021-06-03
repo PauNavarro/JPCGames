@@ -1,18 +1,13 @@
 package controlador;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.util.Random;
 import java.awt.event.ActionEvent;
 
 @SuppressWarnings("serial")
@@ -56,7 +51,7 @@ public class TresenRaya extends JFrame {
 	public TresenRaya() {
 
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 443, 292);
+		setBounds(100, 100, 440, 290);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -181,31 +176,31 @@ public class TresenRaya extends JFrame {
 			}
 		});
 
-		IzquierdaBajo.setBounds(0, 170, 143, 91);
+		IzquierdaBajo.setBounds(0, 170, 140, 90);
 		contentPane.add(IzquierdaBajo);
 
-		MedioBajo.setBounds(141, 170, 154, 91);
+		MedioBajo.setBounds(140, 170, 150, 90);
 		contentPane.add(MedioBajo);
 
-		IzquierdaAriba.setBounds(0, 0, 143, 86);
+		IzquierdaAriba.setBounds(0, 0, 140, 90);
 		contentPane.add(IzquierdaAriba);
 
-		IzquierdaMedio.setBounds(0, 78, 143, 95);
+		IzquierdaMedio.setBounds(0, 80, 140, 90);
 		contentPane.add(IzquierdaMedio);
 
-		MedioAriba.setBounds(141, 0, 154, 86);
+		MedioAriba.setBounds(140, 0, 140, 90);
 		contentPane.add(MedioAriba);
 
-		MedioMedio.setBounds(141, 78, 154, 95);
+		MedioMedio.setBounds(140, 80, 140, 90);
 		contentPane.add(MedioMedio);
 
-		DerechaBajo.setBounds(291, 170, 143, 91);
+		DerechaBajo.setBounds(290, 170, 140, 90);
 		contentPane.add(DerechaBajo);
 
-		DerechaAriba.setBounds(291, 0, 143, 86);
+		DerechaAriba.setBounds(290, 0, 140, 90);
 		contentPane.add(DerechaAriba);
 
-		DerechaMedio.setBounds(291, 78, 143, 95);
+		DerechaMedio.setBounds(290, 80, 140, 90);
 		contentPane.add(DerechaMedio);
 
 	}

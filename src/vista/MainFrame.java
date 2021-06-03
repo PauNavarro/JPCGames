@@ -130,6 +130,7 @@ public class MainFrame {
 		btnTeR.setBackground(Color.GRAY);
 		btnTeR.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ElegirFichaTeR.run();
 			}
 		});
 		btnTeR.setBounds(10, 195, 140, 30);
