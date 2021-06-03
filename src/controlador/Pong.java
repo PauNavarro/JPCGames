@@ -29,26 +29,29 @@ public class Pong extends Canvas implements Juegos {
 	static int puntuacion = 0;
 	static JFrame win;
 	private int iD;
+	private boolean loggedIn;
 
 	Font splash = new Font("Times", Font.BOLD, 60);
 
 	public static void principal() {
 		win = new JFrame("Pong");
-		win.setSize(1000, 735);
+		win.setSize(1000, 740);
 		win.getContentPane().setBackground(Color.BLACK);
 		win.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		win.add(new Pong());
+		win.add(new Pong(MainFrame.loggedIn));
 		win.setVisible(true);
 		win.setResizable(false);
+		win.setIconImage(Toolkit.getDefaultToolkit().getImage(MainFrame.class.getResource("/resources/logo.png")));
 
 	}
 
-	public Pong() {
+	public Pong(boolean loggedIn) {
 		enableEvents(java.awt.AWTEvent.KEY_EVENT_MASK);
 		requestFocus();
+		this.loggedIn = loggedIn;
 
 		pelota = new Ellipse2D.Double(500, 350, 20, 20);
-		direccion = new Point(-5, 5);
+		direccion = new Point(-10, 10);
 		raqueta = new Rectangle(940, 250, 20, 200);
 
 		Timer t = new Timer(true);
@@ -114,7 +117,9 @@ public class Pong extends Canvas implements Juegos {
 
 		if (pelota.x > 1000) {
 
-			subirPuntos();
+			if (this.loggedIn) {
+				subirPuntos();
+			}
 
 			int cont = continuar();
 
@@ -122,7 +127,7 @@ public class Pong extends Canvas implements Juegos {
 				puntuacion = 0;
 				pelota.x = 500;
 				pelota.y = 350;
-				direccion = new Point(-5, 5);
+				direccion = new Point(-10, 10);
 			} else if (cont == 1) {
 				pelota.x = 500;
 				pelota.y = 350;
@@ -159,38 +164,45 @@ public class Pong extends Canvas implements Juegos {
 			Connection conectar = DriverManager.getConnection("jdbc:mysql://54.237.166.122/jpcgames", "conecta",
 					"12345678");
 			Statement s = conectar.createStatement();
-			ResultSet chkUsu = s.executeQuery(
-
-					"Select idUsuario " + "from usuario " + "where Nombre='" + MainFrame.usuarioActual + "';"
-
-			);
+			String sqlID = "Select idUsuario from usuario where Nombre='" + MainFrame.usuarioActual + "';";
+			ResultSet chkUsu = s.executeQuery(sqlID);
 
 			chkUsu.next();
+
 			int idUsu = chkUsu.getInt(1);
 			iD = idUsu;
 
-			try {
+			ResultSet chkPts = s.executeQuery("Select idUsuario From puntuacion where idUsuario = " + iD + ";");
 
-				sqlUpdate = "Update puntuacion " + "SET Puntos = " + puntuacion + " + Puntos " + "Where idUsuario = "
-						+ iD + ";";
+			if (chkPts.first()) {
 
-				s.executeUpdate(sqlUpdate);
-		
-			} catch (Exception e) {
-				System.out.println("Error en el update");
-				System.out.println(sqlUpdate);
-			}
+				try {
 
-			try {
+					sqlUpdate = "Update puntuacion " + "SET Puntos = " + puntuacion + " + Puntos "
+							+ "Where idUsuario = " + iD + ";";
 
-				stmt = conectar.createStatement();
-				sql = "INSERT INTO `puntuacion`(`idUsuario`, `Puntos`) VALUES (" + iD + ", " + puntuacion + ");";
-				stmt.executeUpdate(sql);
+					s.executeUpdate(sqlUpdate);
 
-			} catch (Exception e) {
-				System.out.println("Error en el insert");
-				System.out.println(sql);
-				
+				} catch (Exception e) {
+					System.out.println("Error en el update");
+					System.out.println(sqlUpdate);
+				}
+
+			} else if (!chkPts.first()) {
+
+				try {
+
+					stmt = conectar.createStatement();
+					sql = "INSERT INTO `puntuacion`(`idUsuario`, `Puntos`) VALUES (" + iD + ", " + puntuacion + ");";
+					stmt.executeUpdate(sql);
+
+				} catch (Exception e) {
+					System.out.println("Error en el insert");
+					System.out.println(sql);
+
+				}
+			} else {
+
 			}
 
 		} catch (Exception e) {

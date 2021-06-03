@@ -43,14 +43,14 @@ public class BuscaMinas extends JFrame implements Juegos {
 
 	private void jbInit() throws Exception {
 		this.getContentPane().setLayout(null);
-		this.setSize(new Dimension(483, 380));
+		this.setSize(new Dimension(480, 380));
 		this.setTitle("Busca Minas");
 		jPanel1.setBounds(new Rectangle(0, 40, 477, 300));
 		jPanel1.setBackground(Color.WHITE);
 		jPanel1.setLayout(null);
 		this.setResizable(false);
 		jButton1.setText("Empezar");
-		jButton1.setBounds(new Rectangle(0, 0, 125, 40));
+		jButton1.setBounds(new Rectangle(0, 0, 240, 40));
 		jButton1.setHorizontalTextPosition(SwingConstants.CENTER);
 		jButton1.setAlignmentY((float) 0.0);
 		jButton1.setMargin(new Insets(2, 14, 2, 12));
@@ -75,7 +75,7 @@ public class BuscaMinas extends JFrame implements Juegos {
 		Salir.setHorizontalTextPosition(SwingConstants.CENTER);
 		Salir.setBounds(new Rectangle(0, 0, 125, 40));
 		Salir.setAlignmentY(0.0f);
-		Salir.setBounds(124, 0, 125, 40);
+		Salir.setBounds(240, 0, 240, 40);
 		getContentPane().add(Salir);
 		cargarTablero();
 		colocarBomba(getAncho());
@@ -169,7 +169,7 @@ public class BuscaMinas extends JFrame implements Juegos {
 				int numeroComprueba = 0; // el numero que voy a asignar al boton
 				if (array[i][z] != ("B")) {
 					if (z != 0 && i != 0 && z != alto - 1 && i != ancho - 1) {
-						System.out.println(i + " " + z + " " + ancho + " " + alto);
+						//System.out.println(i + " " + z + " " + ancho + " " + alto);
 
 						if (array[i][z - 1] == "B") {
 							numeroComprueba++;
