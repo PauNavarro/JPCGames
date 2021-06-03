@@ -29,15 +29,25 @@ import javax.swing.SwingConstants;
 public class Puntuaciones extends JFrame {
 
 	/**
-	 * 
+	 * @author JPCGames
+	 * Clase Puntuaciones
 	 */
-	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Atributo JPanel para poder meter la tabla con sus puntuaciones
+	 */
 	private JPanel contentPane;
+	/**
+	 * Para crear una tabla
+	 */
 	private JTable table;
+	/**
+	 * Para crear las columnas que van a ir en la tabla
+	 */
 	static DefaultTableModel columnas;
 
 	/**
-	 * Launch the application.
+	 * Lanzar la ventana.
 	 */
 	public void run() {
 		EventQueue.invokeLater(new Runnable() {
@@ -53,7 +63,7 @@ public class Puntuaciones extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Para poder crear el JFrame
 	 */
 	public Puntuaciones() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(Puntuaciones.class.getResource("/resources/logo.png")));
@@ -116,6 +126,9 @@ public class Puntuaciones extends JFrame {
 
 	}
 
+	/**
+	 * Muestra las 25 primeras puntuaciones ordenadas con el usuario mayor de puntos hasta el que menos
+	 */
 	private static void ActualizarPuntos() {
 
 		String sql = null;

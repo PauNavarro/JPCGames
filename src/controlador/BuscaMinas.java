@@ -21,18 +21,48 @@ import javax.swing.SwingConstants;
 import vista.MainFrame;
 
 public class BuscaMinas extends JFrame implements Juegos {
+	
+	/**
+	 * @author JPCGames
+	 * Juego Buscaminas
+	 */
 
-	private static final long serialVersionUID = 1L;
+	/**
+	 * Panel donde va a estar la matriz de botones
+	 */
 	private JPanel jPanel1 = new JPanel();
+	/**
+	 * Boton para poder volver a empezar el juego
+	 */
 	private JButton jButton1 = new JButton();
+	/**
+	 * El ancho de los botones
+	 */
 	private int ancho = 19;
+	/**
+	 * El alto de los botones
+	 */
 	private int alto = 12;
+	/**
+	 * La matriz de los botones que sera lo que se pulsa cuando se juega al buscaminas
+	 */
 	public JButton Botones[][] = new JButton[ancho][alto];
+	/**
+	 * La matriz de texto que aparecera cuando se pulse el boton
+	 */
 	public String[][] array = new String[ancho][alto];
-	ImageIcon imagen = new ImageIcon("C:\\Users\\DAM\\Desktop\\proyecto\\Juegos\\img\\bomba.jpg");
+	/**
+	 * Boton para poder salir del juego
+	 */
 	private JButton Salir;
+	/**
+	 * Variable en la que se almacena la ID del usuario logeado
+	 */
 	private int iD;
 
+	/**
+	 * Constructor por defecto que inicializa el juego
+	 */
 	public BuscaMinas() {
 		try {
 			jbInit();
@@ -41,6 +71,9 @@ public class BuscaMinas extends JFrame implements Juegos {
 		}
 	}
 
+	/**
+	 * Este método se encarga de inicializar el juego cargando un tablero con la matriz de botones donde se colocan las bombas aleatoriamente y comprobando si hay bombas cerca para ponerle el numero.
+	 */
 	private void jbInit() throws Exception {
 		this.getContentPane().setLayout(null);
 		this.setSize(new Dimension(480, 380));
@@ -84,6 +117,9 @@ public class BuscaMinas extends JFrame implements Juegos {
 		this.setVisible(true);
 	}
 
+	/**
+	 * Boton empezar que lo que hace es volver a incicializar el juego desde 0 cargando todo de nuevo
+	 */
 	private void jButton1_actionPerformed(ActionEvent e) {
 		for (int i = 0; i < ancho; i++) {
 			for (int z = 0; z < alto; z++) {
@@ -99,6 +135,9 @@ public class BuscaMinas extends JFrame implements Juegos {
 	}
 	// —– Inicializa el tablero a 0
 
+	/**
+	 * Metodo que carga el tablero con toda la matriz de botones 
+	 */
 	public void cargarTablero() {
 		for (int i = 0; i < ancho; i++) {
 			for (int z = 0; z < alto; z++) {
@@ -129,6 +168,10 @@ public class BuscaMinas extends JFrame implements Juegos {
 	}
 	// —- Coloca el numero de bombas dependiendo el ancho.
 
+	/**
+	 * Método para colocar las bombas aleatoriamente por todo el tablero
+	 * @param numeroBombas para saber cuántas bombas van a aparecer
+	 */
 	public void colocarBomba(int numeroBombas) {
 		double i = 0;
 		double z = 0;
@@ -145,22 +188,41 @@ public class BuscaMinas extends JFrame implements Juegos {
 		} while (condicion <= ancho);
 	}
 
+	/**
+	 * Para poder cambiar el valor del ancho
+	 * @param sAncho El valor que le queremos cambiar al ancho
+	 */
 	public void setAncho(int sAncho) {
 		ancho = sAncho;
 	}
 
+	/**
+	 * Para saber el valor actual que tiene el ancho
+	 * @return Devuelve el valor actual del ancho
+	 */
 	public int getAncho() {
 		return ancho;
 	}
 
+	/**
+	 * Para poder cambiar el valor del alto
+	 * @param sAlto El valor que le queremos cambiar al Alto
+	 */
 	public void setAlto(int sAlto) {
 		alto = sAlto;
 	}
-
+	
+	/**
+	 * Para saber el valor actual que tiene el alto
+	 * @return Devuelve el valor actual del alto
+	 */
 	public int getAlto() {
 		return alto;
 	}
 
+	/**
+	 * Método que comprueba si hay minas cerca para asignarle a los botones los números adecuados según las bombas que haya
+	 */
 	// —- Asigna un número a cada boton dependiendo de las B que tenga al lado.
 	// --- codigo Busca Minas
 	public void comprueba() {
@@ -206,6 +268,9 @@ public class BuscaMinas extends JFrame implements Juegos {
 
 	// —- Muestra el texto en todos los botones cuando hay bomba.
 
+	/**
+	 * Método que cuando se pulsa una bomba, hace que aparezca el texto que había asignado en todos los botones
+	 */
 	public void textoBotones() {
 		for (int i = 0; i < ancho; i++) {
 			for (int z = 0; z < alto; z++) {
@@ -222,6 +287,11 @@ public class BuscaMinas extends JFrame implements Juegos {
 	// —- Muestra el Numero encima del boton.
 	// —- Cambia las propiedades del boton mostrado.
 
+	/**
+	 * Método que sirve para ponerle el número encima del boton y hacer que aparezca el texto y desaparezca el boton
+	 * @param i es el primero contador para poder recorrer el contenido de la matriz
+	 * @param z es el segundo contado para poder recorrer el contenido de la matriz
+	 */
 	public void ponerNumero(int i, int z) {
 		Botones[i][z].setText(array[i][z]);
 		Botones[i][z].setEnabled(false);
@@ -239,6 +309,11 @@ public class BuscaMinas extends JFrame implements Juegos {
 	}
 	// —- Pone el numero en los botones cercanos.
 
+	/**
+	 * Método para poner las bombas segun el alto y el ancho del tablero
+	 * @param i es el primer contador para poder recorrer el contenido de la matriz
+	 * @param z es el segundo contador para poder recorrer el contenido de la matriz
+	 */
 	private void numeroBomba(int i, int z) {
 		if (z != 0 && i != 0 && z != alto - 1 && i != ancho - 1) {
 			Botones[i - 1][z].setEnabled(false);
@@ -261,6 +336,9 @@ public class BuscaMinas extends JFrame implements Juegos {
 		}
 	}
 
+	/**
+	 * Método que sirve para mostrarte un mensaje si ganas el juego
+	 */
 	// —- Este es el metodo que mostrara el final del game.
 	public void finalJuego() {
 		int contadorFinal = 0;
@@ -279,6 +357,9 @@ public class BuscaMinas extends JFrame implements Juegos {
 		}
 	}
 
+	/**
+	 * Método para actualizar los puntos a la base de datos al usuario que gana el juego
+	 */
 	@Override
 	public void subirPuntos() {
 

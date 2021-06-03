@@ -22,17 +22,45 @@ import java.util.Timer;
 
 @SuppressWarnings("serial")
 public class Pong extends Canvas implements Juegos {
+	
+	/**
+	 * La direccion donde va la pelota
+	 */
 	Point direccion;
+	/**
+	 * Para dibujar la pelota en 2D
+	 */
 	Ellipse2D.Double pelota;
 	// Rectangle paddle1;
+	/**
+	 * Para dibujar la barra que golpea la pelota
+	 */
 	Rectangle raqueta;
+	/**
+	 * para poner la puntuacion que se lleva durante el juego
+	 */
 	static int puntuacion = 0;
+	/**
+	 * Para crear la ventana
+	 */
 	static JFrame win;
+	/**
+	 * Para saber el id del usuario que esta logeado
+	 */
 	private int iD;
+	/**
+	 * Para saber si hay un usuario logeado o no
+	 */
 	private boolean loggedIn;
 
+	/**
+	 * Para definir el tipo de letra
+	 */
 	Font splash = new Font("Times", Font.BOLD, 60);
 
+	/**
+	 * Para crear la ventana
+	 */
 	public static void principal() {
 		win = new JFrame("Pong");
 		win.setSize(1000, 740);
@@ -45,6 +73,10 @@ public class Pong extends Canvas implements Juegos {
 
 	}
 
+	/**
+	 * Constructor con el usuario logeado actualmente
+	 * @param loggedIn Para saber si hay un usuario logeado correctamente o no
+	 */
 	public Pong(boolean loggedIn) {
 		enableEvents(java.awt.AWTEvent.KEY_EVENT_MASK);
 		requestFocus();
@@ -63,6 +95,9 @@ public class Pong extends Canvas implements Juegos {
 		}, 10, 10);
 	}
 
+	/**
+	 * Metodo que actualiza la pantalla
+	 */
 	public void paint(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
 
@@ -76,6 +111,9 @@ public class Pong extends Canvas implements Juegos {
 		g.drawString(Integer.toString(puntuacion), 500, 100);
 	}
 
+	/**
+	 * Detectar cuando se realiza una pulsacion
+	 */
 	public void processKeyEvent(KeyEvent e) {
 		if (e.getID() == KeyEvent.KEY_PRESSED) {
 
@@ -89,6 +127,9 @@ public class Pong extends Canvas implements Juegos {
 		}
 	}
 
+	/**
+	 * Metodo que calcula la posicion de la pelota 
+	 */
 	public void hacerCosas() {
 		pelota.x += direccion.x;
 		pelota.y += direccion.y;
@@ -141,6 +182,9 @@ public class Pong extends Canvas implements Juegos {
 
 	}
 
+	/**
+	 * Metodo para volver a poder jugar o salir del juego cuando pierdes
+	 */
 	private static int continuar() {
 
 		ImageIcon icono = new ImageIcon("J:\\JPCGames\\resources\\50x50.png");
@@ -150,10 +194,16 @@ public class Pong extends Canvas implements Juegos {
 				icono, new String[] { "Si", "No" }, null);
 	}
 
+	/**
+	 * @return Devuelve si la ventana actual esta en primer plano
+	 */
 	public boolean isFocusable() {
 		return true;
 	}
 
+	/**
+	 * Para subir los puntos a la base de datos del usuario que este logeado en ese momento cada vez que se pierde
+	 */
 	@Override
 	public void subirPuntos() {
 		Statement stmt = null;

@@ -31,15 +31,23 @@ import javax.swing.ScrollPaneConstants;
 public class TodasPuntuaciones extends JFrame {
 
 	/**
-	 * 
+	 * @author JPCGames Todas Puntuaciones
 	 */
+	
+
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
+	/**
+	 * crear tabla 
+	 * */
 	private JTable table;
+	/**
+	 * crear las columnas para el tablero
+	 * */
 	static DefaultTableModel columnas;
 
 	/**
-	 * Launch the application.
+	 * Inicia la aplicación.
 	 */
 	public void run() {
 		EventQueue.invokeLater(new Runnable() {
@@ -55,8 +63,10 @@ public class TodasPuntuaciones extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Crear el tablero de las puntuaciones
 	 */
+	
+
 	public TodasPuntuaciones() {
 		setIconImage(Toolkit.getDefaultToolkit().getImage(TodasPuntuaciones.class.getResource("/resources/logo.png")));
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -91,6 +101,7 @@ public class TodasPuntuaciones extends JFrame {
 
 	}
 
+	/**  Se actulizan los puntos de los jugadores  */
 	private static void ActualizarPuntos() {
 
 		String sql = null;
