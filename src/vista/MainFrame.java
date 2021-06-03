@@ -10,16 +10,39 @@ import controlador.*;
 
 public class MainFrame {
 
+	/**
+	 * @author JPCGames
+	 * Clase MainFrame
+	 */
+	
+	/**
+	 * Para poder crear la interfaz gráfica
+	 */
 	private JFrame frame;
+	/**
+	 * Para que el usuario pueda escribir el nombre de usuario que quiere
+	 */
 	public static JTextField textUsuario;
+	/**
+	 * Para que el usuario pueda poner la contraseña con *
+	 */
 	public static JPasswordField passwordField;
+	/**
+	 * Para crear una etiqueta donde te dice si te has logeado o registrado correctamente
+	 */
 	public static JLabel lblconfirmacion;
+	/**
+	 * Para guardar el usuario que esta logeado
+	 */
 	public static String usuarioActual;
+	/**
+	 * Para saber si hay un usuario logeado o no
+	 */
 	public static boolean loggedIn = false;
 
 
 	/**
-	 * Launch the application.
+	 * Lanzar la ventana.
 	 */
 	public static void main(String[] args) {
 
@@ -36,7 +59,7 @@ public class MainFrame {
 	}
 
 	/**
-	 * Create the application.
+	 * Para crear la aplicacion.
 	 */
 	public MainFrame() {
 		initialize();
@@ -45,7 +68,7 @@ public class MainFrame {
 	
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Para inicializar el contenido de la aplicacion
 	 */
 	private void initialize() {
 		frame = new JFrame("JPCGames");
