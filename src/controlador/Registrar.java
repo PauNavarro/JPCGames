@@ -9,7 +9,15 @@ import java.sql.Statement;
 import vista.*;
 
 public class Registrar {
+	
+	/**
+	 * @author JPCGames
+	 * Clase Registrar
+	 */
 
+	/**
+	 * Método que registra a un usuario en la base de datos mediante consultas sql
+	 */
 	public static void registrar() {
 
 		try {
