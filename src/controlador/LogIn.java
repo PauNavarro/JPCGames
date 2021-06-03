@@ -9,6 +9,11 @@ import java.sql.Statement;
 import vista.MainFrame;
 
 public class LogIn {
+	
+	/**
+	 * @author JPCGames
+	 * Clase Login 
+	 */
 
 	/**
 	 * Atributo que por defecto hace que el login sea falso si no se ponen sus datos
