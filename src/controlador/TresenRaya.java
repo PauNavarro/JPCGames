@@ -14,14 +14,24 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.Random;
 import java.awt.event.ActionEvent;
-
+/**
+ * @author JPCGames Juego Tres en Raya
+ */
 @SuppressWarnings("serial")
 public class TresenRaya extends JFrame {
+	/**
+	 * aquie estan las variables que se van a utilizar enRaya se utiliza para hacer
+	 * el tres en raya
+	 */
 	public boolean enRaya = false;
+	/** empate es para el empate */
 	public boolean empate = false;
+	/** turno es para cambiar el turno */
 	public boolean turno;
+	/** ocupado es para si la posicion esta ocupada o no */
 	public boolean ocupado;
 	private JPanel contentPane;
+	/** aqui se declara la variable de los botones */
 	JButton DerechaAriba = new JButton("");
 	JButton DerechaMedio = new JButton("");
 	JButton DerechaBajo = new JButton("");
@@ -33,7 +43,7 @@ public class TresenRaya extends JFrame {
 	JButton MedioBajo = new JButton("");
 
 	/**
-	 * Launch the application.
+	 * Inicia la aplicación.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -50,7 +60,7 @@ public class TresenRaya extends JFrame {
 	}
 
 	/**
-	 * Create the frame.
+	 * Crear el tablero.
 	 */
 
 	public TresenRaya() {
@@ -61,6 +71,11 @@ public class TresenRaya extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+
+		/**
+		 * Aqui se les da la funcinalidad al los botones para que cuando pulses pongan x
+		 * aparte de llamar a los metodos con sus respetivas funciones
+		 */
 
 		DerechaAriba.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -181,6 +196,8 @@ public class TresenRaya extends JFrame {
 			}
 		});
 
+		/** aqui se ha puestos los tamaños para los botones.*/
+
 		IzquierdaBajo.setBounds(0, 170, 143, 91);
 		contentPane.add(IzquierdaBajo);
 
@@ -210,12 +227,43 @@ public class TresenRaya extends JFrame {
 
 	}
 
+	/**
+	 * Este metodo te comprueba si los requisitos para el tres en raya se han
+	 * realizado si ese es el caso habra tres en raya para el determinado ganador.
+	 * 
+	 * @param DerechaAriba se llama al boton para comprobar si se produce tres en
+	 * raya en su posicion.
+	 * 
+	 * @param DerechaMedio se llama al boton para comprobar si se produce tres en
+	 * raya en su posicion.
+	 * 
+	 * @param DerechaBajo se llama al boton para comprobar si se produce tres en
+	 * raya en su posicion.
+	 * 
+	 * @param IzquierdaAriba se llama al boton para comprobar si se produce tres en
+	 * raya en su posicion.
+	 * 
+	 * @param IzquierdaMedio se llama al boton para comprobar si se produce tres en
+	 * raya en su posicion.
+	 * 
+	 * @param IzquierdaBajo se llama al boton para comprobar si se produce tres en
+	 * raya en su posicion.
+	 * 
+	 * @param MedioAriba se llama al boton para comprobar si se produce tres en raya
+	 * en su posicion.
+	 * 
+	 * @param MedioMedio se llama al boton para comprobar si se produce tres en raya
+	 * en su posicion.
+	 * 
+	 * @param MedioBajo se llama al boton para comprobar si se produce tres en raya
+	 * en su posicion.
+	 */
 	public void comprobarTresRayas(JButton DerechaAriba, JButton DerechaMedio, JButton DerechaBajo,
 			JButton IzquierdaAriba, JButton IzquierdaMedio, JButton IzquierdaBajo, JButton MedioAriba,
 			JButton MedioMedio, JButton MedioBajo) {
-		System.out.println("entra 2");
+		/* System.out.println("entra 2");*/
 
-		// Victoria para la X
+		/** Tres en Raya para la X*/
 
 		if (DerechaAriba.getText().equals("X") && DerechaMedio.getText().equals("X")
 				&& DerechaBajo.getText().equals("X")) {
@@ -264,7 +312,7 @@ public class TresenRaya extends JFrame {
 			enRaya();
 		}
 
-		// Victoria para el O
+		/** Tres en Raya para la O*/
 
 		if (DerechaAriba.getText().equals("O") && DerechaMedio.getText().equals("O")
 				&& DerechaBajo.getText().equals("O")) {
@@ -322,6 +370,11 @@ public class TresenRaya extends JFrame {
 
 	}
 
+	/**
+	 * Aqui apartir del metodo comprovar tres en raya se ejecutara el tres en raya
+	 * para dar la victoria o no
+	 */
+
 	public void enRaya() {
 
 		if (enRaya == true) {
@@ -337,8 +390,11 @@ public class TresenRaya extends JFrame {
 
 	}
 
+	/**Aqui se realiza cuando la maquina pone un O*/
+
 	public void turno() {
 		int cont = 0;
+
 		while (cont < 1) {
 
 			if (cont > 10) {
@@ -347,7 +403,7 @@ public class TresenRaya extends JFrame {
 
 				int random = (int) (Math.random() * 9);
 
-				System.out.println("" + random);
+				/* System.out.println("" + random);*/
 
 				switch (random) {
 				case 1:
@@ -504,13 +560,26 @@ public class TresenRaya extends JFrame {
 		}
 	}
 
-	protected void Random(JButton DerechaAriba, JButton DerechaMedio, JButton DerechaBajo, JButton IzquierdaAriba,
-			JButton IzquierdaMedio, JButton IzquierdaBajo, JButton MedioAriba, JButton MedioMedio, JButton MedioBajo) {
+	/**
+	 * @Deprecated Random este metodo antes se utilizaba para dividir la mitad del
+	 * metodo turno y llamar a ramdom.
+	 * 
+	 * protected void Random(JButton DerechaAriba, JButton DerechaMedio, JButton
+	 * DerechaBajo, JButton IzquierdaAriba, JButton IzquierdaMedio, JButton
+	 * IzquierdaBajo, JButton MedioAriba, JButton MedioMedio, JButton MedioBajo) { }
+	 */
 
-	}
+	/**
+	 * @param turno indica el turno que le toca despues del usuario
+	 * 
+	 * @param ocupado inica si el espacio esta ocupado o no Este metodo comprueba si
+	 * X o O esta ocupando un espacio en una determinada posicion
+	 * 
+	 * 
+	 */
 
 	protected void EspacioOcupado(boolean turno, boolean ocupado) {
-		System.out.println("entra 1");
+		// System.out.println("entra 1");
 
 		if (DerechaAriba.getText().equals("X") || DerechaAriba.getText().equals("O")) {
 			ocupado = true;
