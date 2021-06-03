@@ -10,8 +10,14 @@ import vista.MainFrame;
 
 public class LogIn {
 
+	/**
+	 * Atributo que por defecto hace que el login sea falso si no se ponen sus datos
+	 */
 	public static boolean loginCorrecto = false;
 	
+	/**
+	 * Método que hace consultas a la base de datos para comprobar si los datos introducidos se encuentran en la base de datos para poder logearse
+	 */
 	public static void login() {
 
 		try {
