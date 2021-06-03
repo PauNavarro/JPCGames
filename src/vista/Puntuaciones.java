@@ -67,6 +67,9 @@ public class Puntuaciones extends JFrame {
 
 		columnas = new DefaultTableModel();
 		table = new JTable(columnas);
+		table.setShowVerticalLines(false);
+		table.setShowHorizontalLines(false);
+		table.setShowGrid(false);
 
 		columnas.addColumn("Posicion");
 		columnas.addColumn("Nombre");
@@ -81,13 +84,12 @@ public class Puntuaciones extends JFrame {
 		JButton btnNewButton = new JButton("Todas las puntuaciones");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				vista.TodasPuntuaciones puntComp = new TodasPuntuaciones();
+				puntComp.run();
+				
 
-				ImageIcon icono = new ImageIcon("/resources/50x50.png");
-
-				JOptionPane.showOptionDialog(getParent(), "Quieres desbloquear la tabla de puntuaciones completa por solo 99.99€?",
-						"Desbloquear Puntuaciones",
-						JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, icono, new String[] { "Si", "No" },
-						null);
+				
 
 			}
 		});
@@ -124,7 +126,7 @@ public class Puntuaciones extends JFrame {
 			Connection conectar = DriverManager.getConnection("jdbc:mysql://54.237.166.122/jpcgames", "conecta",
 					"12345678");
 			Statement s = conectar.createStatement();
-			sql = "Select u.idUsuario, u.Nombre, p.Puntos FROM usuario u Inner JOIN puntuacion p ON u.idUsuario = p.idUsuario ORDER BY p.Puntos  DESC;";
+			sql = "Select u.idUsuario, u.Nombre, p.Puntos FROM usuario u Inner JOIN puntuacion p ON u.idUsuario = p.idUsuario ORDER BY p.Puntos  DESC limit 25;";
 			ResultSet rs = s.executeQuery(sql);
 
 			Object[] fila = new Object[3];

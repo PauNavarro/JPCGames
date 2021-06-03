@@ -10,7 +10,8 @@ import vista.MainFrame;
 
 public class LogIn {
 
-	 
+	public static boolean loginCorrecto = false;
+	
 	public static void login() {
 
 		try {
@@ -30,6 +31,7 @@ public class LogIn {
 				
 				MainFrame.lblconfirmacion.setForeground(Color.black);
 				MainFrame.lblconfirmacion.setText("Login correcto");
+				loginCorrecto = true;
 				
 				MainFrame.usuarioActual = MainFrame.textUsuario.getText();
 				
@@ -54,5 +56,7 @@ public class LogIn {
 		}
 
 	}
+
+	
 
 }

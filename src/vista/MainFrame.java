@@ -15,6 +15,8 @@ public class MainFrame {
 	public static JPasswordField passwordField;
 	public static JLabel lblconfirmacion;
 	public static String usuarioActual;
+	public static boolean loggedIn = false;
+
 
 	/**
 	 * Launch the application.
@@ -168,9 +170,11 @@ public class MainFrame {
 		
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
+
 			public void actionPerformed(ActionEvent e) {
 				
 					controlador.LogIn.login();
+					loggedIn = LogIn.loginCorrecto;
 				
 			}
 		});
