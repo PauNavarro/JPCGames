@@ -3,8 +3,14 @@
  */
 package controlador;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+
 import javax.swing.JOptionPane;
 
+import vista.MainFrame;
 import vista.TeR;
 
 /**
@@ -413,6 +419,61 @@ public class TeRControlador implements Juegos {
 	}
 
 	public void subirPuntos() {
+		
+		Statement stmt = null;
+		String sqlUpdate = null;
+		String sql = null;
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			Connection conectar = DriverManager.getConnection("jdbc:mysql://54.237.166.122/jpcgames", "conecta",
+					"12345678");
+			Statement s = conectar.createStatement();
+			String sqlID = "Select idUsuario from usuario where Nombre='" + MainFrame.usuarioActual + "';";
+			ResultSet chkUsu = s.executeQuery(sqlID);
+
+			chkUsu.next();
+
+			int idUsu = chkUsu.getInt(1);
+			int iD = idUsu;
+
+			ResultSet chkPts = s.executeQuery("Select idUsuario From puntuacion where idUsuario = " + iD + ";");
+
+			if (chkPts.first()) {
+
+				try {
+
+					sqlUpdate = "Update puntuacion " + "SET Puntos = 100 + Puntos "
+							+ "Where idUsuario = " + iD + ";";
+
+					s.executeUpdate(sqlUpdate);
+
+				} catch (Exception e) {
+					System.out.println("Error en el update");
+					System.out.println(sqlUpdate);
+				}
+
+			} else if (!chkPts.first()) {
+
+				try {
+
+					stmt = conectar.createStatement();
+					sql = "INSERT INTO `puntuacion`(`idUsuario`, `Puntos`) VALUES (" + iD + ", 100);";
+					stmt.executeUpdate(sql);
+
+				} catch (Exception e) {
+					System.out.println("Error en el insert");
+					System.out.println(sql);
+
+				}
+			} else {
+
+			}
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+
+		}
 
 	}
 
