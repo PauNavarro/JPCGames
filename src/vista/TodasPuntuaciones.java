@@ -31,7 +31,7 @@ import javax.swing.ScrollPaneConstants;
 public class TodasPuntuaciones extends JFrame {
 
 	/**
-	 * @author JPCGames Todas Puntuaciones
+	 * @author JPCGames 
 	 */
 	
 
