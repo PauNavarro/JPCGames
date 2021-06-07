@@ -24,11 +24,11 @@ if(isset($_POST['enter'])){
 function loginForm(){
     echo
     '<div id="loginform">
-    <p>Please enter your name to continue!</p>
+    <p>Introduce tu nombre!</p>
     <form action="index.php" method="post">
-      <label for="name">Name &mdash;</label>
+      <label for="name">Nombre &mdash;</label>
       <input type="text" name="name" id="name" />
-      <input type="submit" name="enter" id="enter" value="Enter" />
+      <input type="submit" name="enter" id="enter" value="Continuar" />
     </form>
   </div>';
 }
