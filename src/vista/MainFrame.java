@@ -11,10 +11,9 @@ import controlador.*;
 public class MainFrame {
 
 	/**
-	 * @author JPCGames
-	 * Clase MainFrame
+	 * @author JPCGames Clase MainFrame
 	 */
-	
+
 	/**
 	 * Para poder crear la interfaz gráfica
 	 */
@@ -28,7 +27,8 @@ public class MainFrame {
 	 */
 	public static JPasswordField passwordField;
 	/**
-	 * Para crear una etiqueta donde te dice si te has logeado o registrado correctamente
+	 * Para crear una etiqueta donde te dice si te has logeado o registrado
+	 * correctamente
 	 */
 	public static JLabel lblconfirmacion;
 	/**
@@ -39,7 +39,6 @@ public class MainFrame {
 	 * Para saber si hay un usuario logeado o no
 	 */
 	public static boolean loggedIn = false;
-
 
 	/**
 	 * Lanzar la ventana.
@@ -65,8 +64,6 @@ public class MainFrame {
 		initialize();
 	}
 
-	
-
 	/**
 	 * Para inicializar el contenido de la aplicacion
 	 */
@@ -89,6 +86,12 @@ public class MainFrame {
 		logoJPC.setBorderPainted(false);
 		logoJPC.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				try {
+					URI uri = new URI("https://jpcgames.ddns.net/");
+					Desktop.getDesktop().browse(uri);
+				} catch (Exception except) {
+					except.printStackTrace();
+				}
 			}
 		});
 		logoJPC.setBounds(10, 10, 150, 50);
@@ -101,10 +104,10 @@ public class MainFrame {
 		btnPuntuaciones.setBackground(Color.GRAY);
 		btnPuntuaciones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				Puntuaciones puntuaciones = new Puntuaciones();
 				puntuaciones.run();
-				
+
 			}
 		});
 		btnPuntuaciones.setBounds(170, 10, 215, 50);
@@ -114,12 +117,11 @@ public class MainFrame {
 		btnPong.setForeground(Color.WHITE);
 		btnPong.setBackground(Color.GRAY);
 		btnPong.addActionListener(new ActionListener() {
-		
 
 			public void actionPerformed(ActionEvent e) {
-				
+
 				Pong.principal();
-				
+
 			}
 		});
 		btnPong.setBounds(10, 90, 140, 30);
@@ -140,9 +142,9 @@ public class MainFrame {
 		btnBuscaMinas.setBackground(Color.GRAY);
 		btnBuscaMinas.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-			new BuscaMinas();
-				
+
+				new BuscaMinas();
+
 			}
 		});
 		btnBuscaMinas.setBounds(10, 160, 140, 30);
@@ -173,48 +175,48 @@ public class MainFrame {
 		placeholderPasswd.changeStyle(Font.ITALIC);
 		passwordField.setBounds(10, 290, 140, 30);
 		frame.getContentPane().add(passwordField);
-		
+
 		JButton btnChat = new JButton("Chat online");
 		btnChat.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				try{
-					URI uri = new URI("http://54.237.166.122/");
+
+				try {
+					URI uri = new URI("https://jpcgames.ddns.net/index.php");
 					Desktop.getDesktop().browse(uri);
 				} catch (Exception except) {
 					except.printStackTrace();
 				}
-				
+
 			}
 		});
 		btnChat.setForeground(Color.WHITE);
 		btnChat.setBackground(Color.GRAY);
 		btnChat.setBounds(170, 260, 215, 50);
 		frame.getContentPane().add(btnChat);
-		
+
 		JButton btnLogin = new JButton("Login");
 		btnLogin.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				
-					controlador.LogIn.login();
-					loggedIn = LogIn.loginCorrecto;
-				
+
+				controlador.LogIn.login();
+				loggedIn = LogIn.loginCorrecto;
+
 			}
 		});
 		btnLogin.setBounds(10, 325, 140, 25);
 		frame.getContentPane().add(btnLogin);
-		
+
 		lblconfirmacion = new JLabel("");
 		lblconfirmacion.setBounds(10, 230, 215, 23);
 		frame.getContentPane().add(lblconfirmacion);
-		
+
 		JButton btnRegistrarse = new JButton("Registrarse");
 		btnRegistrarse.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
+
 				Registrar.registrar();
-				
+
 			}
 		});
 		btnRegistrarse.setBounds(10, 350, 140, 25);

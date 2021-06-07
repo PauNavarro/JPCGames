@@ -13,24 +13,70 @@ import java.awt.event.ActionEvent;
 
 public class TeR {
 
+	/**
+	 * @author JPCGames
+	 */
+	
+	/**
+	 * Crea la ventana
+	 */
 	private JFrame frame;
+	/**
+	 * Define la ficha del usuario
+	 */
 	public static String ficha;
+	/**
+	 * Crea el boton de Arriba a la izquierda
+	 */
 	public static JButton btnArrIzq;
+	/**
+	 * Crea el boton de Arriba a la izquierda
+	 */
 	public static JButton btnArrMed;
+	/**
+	 * Crea el boton de Arriba en el medio
+	 */
 	public static JButton btnArrDer;
+	/**
+	 * Crea el boton del Medio a la izquierda
+	 */
 	public static JButton btnMedIzq;
+	/**
+	 * Crea el boton del Medio en el centro
+	 */
 	public static JButton btnMedMed;
+	/**
+	 * Crea el boton del Medio a la derecha
+	 */
 	public static JButton btnMedDer;
+	/**
+	 * Crea el boton de Abajo a la izquierda
+	 */
 	public static JButton btnAbjIzq;
+	/**
+	 * Crea el boton de Abajo a la izquierda
+	 */
 	public static JButton btnAbjMed;
+	/**
+	 * Crea el boton de Abajo a la izquierda
+	 */
 	public static JButton btnAbjDer;
+	/**
+	 * Crea un array de booleans que representa las casillas donde se ha realizado una jugada
+	 */
 	public static boolean[] arrJugadas = new boolean[9];
 
 	/**
-	 * Launch the application.
+	 * Lanzar la aplicaion
+	 * @param ficha - Guarda la ficha elegida por el usuario en la ventana anterior
 	 */
 	public static void run(String ficha) {
 		TeR.ficha = ficha;
+		
+		for (int i = 0; i < arrJugadas.length; i++) {
+			arrJugadas[i] = false;
+		}
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -44,14 +90,14 @@ public class TeR {
 	}
 
 	/**
-	 * Create the application.
+	 * Crear la aplicacion
 	 */
 	public TeR() {
 		initialize();
 	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Iniciar el Jframe
 	 */
 	private void initialize() {
 		frame = new JFrame();
@@ -59,13 +105,11 @@ public class TeR {
 		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(MainFrame.class.getResource("/resources/logo.png")));
 		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
-		
-		 
 
 		btnArrIzq = new JButton();
 		btnArrIzq.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			
+
 				if (!arrJugadas[0]) {
 					arrJugadas[0] = true;
 					TeRControlador.anyadirFicha(ficha, 0);

@@ -19,12 +19,32 @@ import vista.TeR;
  */
 public class TeRControlador implements Juegos {
 
-	
-	
+	/**
+	 * Los puntos ganados por el usuario al ganar o al empatar
+	 */
+	static int puntos = 100;
+
+	/**
+	 * Constructor por defecto
+	 */
 	public TeRControlador() {
 	}
 
+	/**
+	 * Metodo utilizado para añadir la ficha del usuario al tablero
+	 * 
+	 * @param ficha    Ficha elegida por el usuario
+	 * @param posicion Posicion en el tablero pulsada por el jugador
+	 */
 	public static void anyadirFicha(String ficha, int posicion) {
+
+		if (comprobarArray(TeR.arrJugadas) && !chkTeRProg(ficha) && !chkTeRUsu(ficha)) {
+			mostrarOptionPaneEmpate();
+			puntos = 50;
+			TeRControlador ter = new TeRControlador();
+			ter.subirPuntos();
+			System.exit(0);
+		}
 
 		switch (posicion) {
 		case 0:
@@ -226,16 +246,38 @@ public class TeRControlador implements Juegos {
 
 	}
 
+	/**
+	 * Metodo utilizado para mostrar un mensaje cuando se pierde la partida
+	 */
 	private static void mostrarOptionPaneProg() {
 		JOptionPane.showMessageDialog(null, "Has perdido \n El programa se va a cerrar", "Has perdido",
 				JOptionPane.INFORMATION_MESSAGE);
 	}
 
+	/**
+	 * Metodo utilizado para mostrar un mensaje cuando se empata
+	 */
+	private static void mostrarOptionPaneEmpate() {
+		JOptionPane.showMessageDialog(null, "Has conseguido 50 puntos \n El programa se va a cerrar", "Empate",
+				JOptionPane.INFORMATION_MESSAGE);
+
+	}
+
+	/**
+	 * Metodo utilizado para mostrar un mensaje cuando se gana la partida
+	 */
 	private static void mostrarOptionPane() {
 		JOptionPane.showMessageDialog(null, "Has conseguido 100 puntos \n El programa se va a cerrar", "Has ganado",
 				JOptionPane.INFORMATION_MESSAGE);
 	}
 
+	/**
+	 * Metodo utilizado para comprobar si el usuario ha consegido un Tres en raya
+	 * 
+	 * @param ficha La ficha elegida por el usuario
+	 * @return True si el usuario ha conseguido un Tres en Raya, False si no lo ha
+	 *         conseguido
+	 */
 	private static boolean chkTeRUsu(String ficha) {
 
 		boolean tresEnRaya = false;
@@ -279,6 +321,13 @@ public class TeRControlador implements Juegos {
 		return tresEnRaya;
 	}
 
+	/**
+	 * Metodo utilizado para comprobar si el programa ha consegido un Tres en raya
+	 * 
+	 * @param ficha La ficha elegida por el usuario
+	 * @return True si el programa ha conseguido un Tres en Raya, False si no lo ha
+	 *         conseguido
+	 */
 	private static boolean chkTeRProg(String ficha) {
 
 		boolean tresEnRaya = false;
@@ -330,6 +379,13 @@ public class TeRControlador implements Juegos {
 		return tresEnRaya;
 	}
 
+	/**
+	 * Metodo para generar aleatoriamente una jugada para el programa
+	 * 
+	 * @param jugadas Array que contiene las posiciones que han sido jugadas y las
+	 *                que no, True significa que la posicion ha sido jugada, false
+	 *                que no lo ha sido
+	 */
 	public static void JugadaPrograma(boolean[] jugadas) {
 
 		boolean jugadaValida = false;
@@ -369,6 +425,12 @@ public class TeRControlador implements Juegos {
 		}
 	}
 
+	/**
+	 * Metodo que añade la jugada de el programa al tablero
+	 * 
+	 * @param ficha  La ficha contraria a la elegida por el usuario
+	 * @param jugada La jugada del programa
+	 */
 	private static void anyadirFichaMaquina(String ficha, int jugada) {
 
 		switch (jugada) {
@@ -411,6 +473,13 @@ public class TeRControlador implements Juegos {
 
 	}
 
+	/**
+	 * Metodo para comprobar que todo el array de jugadas es verdadero o falso para
+	 * asi detener el juego
+	 * 
+	 * @param arrJugadas Array de booleans que contiene 9 posiciones
+	 * @return True si todo el array es verdadero, False si no lo es
+	 */
 	public static boolean comprobarArray(boolean[] arrJugadas) {
 		for (boolean b : arrJugadas)
 			if (!b)
@@ -418,8 +487,11 @@ public class TeRControlador implements Juegos {
 		return true;
 	}
 
+	/**
+	 * Metodo utilizado para subir la puntuacion a la base de datos
+	 */
 	public void subirPuntos() {
-		
+
 		Statement stmt = null;
 		String sqlUpdate = null;
 		String sql = null;
@@ -442,8 +514,8 @@ public class TeRControlador implements Juegos {
 
 				try {
 
-					sqlUpdate = "Update puntuacion " + "SET Puntos = 100 + Puntos "
-							+ "Where idUsuario = " + iD + ";";
+					sqlUpdate = "Update puntuacion " + "SET Puntos = " + puntos + " + Puntos " + "Where idUsuario = "
+							+ iD + ";";
 
 					s.executeUpdate(sqlUpdate);
 
@@ -457,7 +529,7 @@ public class TeRControlador implements Juegos {
 				try {
 
 					stmt = conectar.createStatement();
-					sql = "INSERT INTO `puntuacion`(`idUsuario`, `Puntos`) VALUES (" + iD + ", 100);";
+					sql = "INSERT INTO `puntuacion`(`idUsuario`, `Puntos`) VALUES (" + iD + "," + puntos + ");";
 					stmt.executeUpdate(sql);
 
 				} catch (Exception e) {
